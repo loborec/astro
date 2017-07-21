@@ -1,7 +1,7 @@
 {
   "name": "loborec/php-astro",
-  "description": "",
-  "keywords": ["php", "yii", "functions", "shortcut"],
+  "description": "Astro is small collection of the astronomical functions written in php.",
+  "keywords": ["php", "astronomy"],
   "type": "library",
   "homepage": "https://github.com/loborec/php-astro",
   "license": "",

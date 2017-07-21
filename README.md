@@ -1,7 +1,7 @@
 php-astro
 ===========
 
-Astro is small collection of the astronomical functions written in php. 
+Astronomical Objects Azimuth and Elevation Estimation 
 
 This class is based on the works:
 
@@ -61,6 +61,31 @@ Verified output by comparison with the following source data: http://aa.usno.nav
 Copyright (c) 2010, Darin Koblick
 
 MATLAB to php translation by Dubravko Loborec
+
+### Solar Azimuth and Elevation Estimation
+Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic latitude, longitude and altitude.
+
+Example Function Call: 
+```php
+$result = Astro::SolarAzEl(1991, 05, 19, 13, 0, 0, 50, 10, 0);
+var_dump(result);
+```
+Result:
+```txt
+array (size=2)
+  0 => float 110.63005216655
+  1 => float 35.226177186756
+```
+
+Input List: 
+UTC Date and Time - Year, Month, Day, Hour, Minute, Second 
+Latitude - Site Latitude in degrees -90:90 -> S(-) N(+)
+Longitude - Site Longitude in degrees -180:180 W(-) E(+)
+Altitude - Site Altitude in km
+
+Output List: 
+Az - Solar Azimuth angle in degrees
+El - Solar Elevation/Altitude Angle in degrees
 
 ### Julian date Algorithm (juliandate)
 The Julian date (JD) of any instant is the Julian day number for the preceding noon in Universal Time plus the fraction of the day since that instant. Julian dates are expressed as a Julian day number with a decimal fraction added
