@@ -60,9 +60,7 @@ Verified output by comparison with the following source data: http://aa.usno.nav
 
 Copyright (c) 2010, Darin Koblick
 
-
-## Examples
-
+From MATLAB to php translated by Dubravko Loborec
 
 
             
