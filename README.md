@@ -31,7 +31,7 @@ This algorithm will accept a Latitude, Longitude and Altitude location as well a
 Example Function Call: 
 ```php
 $result = Astro::LunarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
-var_dump(result);
+var_dump($result);
 ```
 Result:
 ```txt
@@ -68,7 +68,7 @@ Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic
 Example Function Call: 
 ```php
 $result = Astro::SolarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
-var_dump(result);
+var_dump($result);
 ```
 Result:
 ```txt
