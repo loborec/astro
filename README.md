@@ -23,7 +23,7 @@ You can use [Composer](http://getcomposer.org/) to add the [package](https://pac
 ```
 
 ## Functions
-# Lunar Azimuth and Altitude Estimation Algorithm (LunarAzEl)
+### Lunar Azimuth and Altitude Estimation Algorithm (LunarAzEl)
 Predict the Lunar Azimuth and Altitude within +/- .2 deg of any lat and lon for a given UTC
 
 This algorithm will accept a Latitude, Longitude and Altitude location as well as a specific universal coordinated time. It will use this information and calculate the position of the moon in a local coordinate frame (az and alt aka az and el).
@@ -62,8 +62,29 @@ Copyright (c) 2010, Darin Koblick
 
 From MATLAB to php translated by Dubravko Loborec
 
+### Julian date Algorithm (juliandate)
+The Julian date (JD) of any instant is the Julian day number for the preceding noon in Universal Time plus the fraction of the day since that instant. Julian dates are expressed as a Julian day number with a decimal fraction added
 
-            
+Example converting date to UTC, and calculate juliandate;
 
+```php
+    $date = new DateTime('2017-07-20T10:20:00 CEST');
+    $gmtime=$date->getTimestamp();
 
+    $y=gmdate('Y', $gmtime);
+    $m=gmdate('m', $gmtime);
+    $d=gmdate('d', $gmtime);
+    $h=gmdate('H', $gmtime);
+    $mn=gmdate('i', $gmtime);
+    $s=gmdate('s', $gmtime);
 
+    echo juliandate($y, $m, $d, $h, $mn, $s);
+```
+
+Input: 
+
+UTC Date and Time - Year, Month, Day, Hour, Minute, Second
+
+Output:
+
+Julian date
