@@ -93,6 +93,12 @@ Az - Solar Azimuth angle in degrees
 
 El - Solar Elevation/Altitude Angle in degrees
 
+Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
+
+Copyright (c) 2010, Darin Koblick
+
+MATLAB to php translation by Dubravko Loborec
+
 ### Julian date Algorithm (juliandate)
 The Julian date (JD) of any instant is the Julian day number for the preceding noon in Universal Time plus the fraction of the day since that instant. Julian dates are expressed as a Julian day number with a decimal fraction added
 
@@ -125,9 +131,3 @@ UTC Date and Time - Year, Month, Day, Hour, Minute, Second
 Output:
 
 Julian date
-
-Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
-
-Copyright (c) 2010, Darin Koblick
-
-MATLAB to php translation by Dubravko Loborec
