@@ -60,12 +60,12 @@ Verified output by comparison with the following source data: http://aa.usno.nav
 
 Copyright (c) 2010, Darin Koblick
 
-From MATLAB to php translated by Dubravko Loborec
+MATLAB to php translation by Dubravko Loborec
 
 ### Julian date Algorithm (juliandate)
 The Julian date (JD) of any instant is the Julian day number for the preceding noon in Universal Time plus the fraction of the day since that instant. Julian dates are expressed as a Julian day number with a decimal fraction added
 
-Example converting date to UTC, and calculate juliandate;
+Example converting date to UTC, and calculate juliandate:
 
 ```php
     $date = new DateTime('2017-07-20T10:20:00 CEST');
@@ -81,7 +81,7 @@ Example converting date to UTC, and calculate juliandate;
     echo gmdate('d.m.Y, H:i:s', $gmtime);
     echo juliandate($y, $m, $d, $h, $mn, $s);
 ```
-
+Result:
 ```txt
 20.07.2017, 08:20:00
 2457954.8472222
