@@ -1,0 +1,20 @@
+{
+  "name": "loborec/php-astro",
+  "description": "",
+  "keywords": ["php", "yii", "functions", "shortcut"],
+  "type": "library",
+  "homepage": "https://github.com/loborec/php-astro",
+  "license": "",
+  "authors": [
+    {
+      "name": "Dubravko Loborec",
+      "homepage": "http://www.DubravkoLoborec.com"
+    }
+  ],
+  "require": {
+		"php": ">=7.0.0"
+  },
+  "autoload": {
+        "classmap": ["src/"]
+    }
+}
