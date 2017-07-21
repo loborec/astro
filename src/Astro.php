@@ -116,7 +116,7 @@
         * @param integer $s //UTC second
         * @return float
         */
-        public static function juliandate ($y, $m, $d, $h=0, $mn=0, $s=0){
+        public static function juliandate($y, $m, $d, $h=0, $mn=0, $s=0){
             if ( $m <= 2 ){ // january & february
                 $y  = $y - 1.0;
                 $m =$m + 12.0;
@@ -149,7 +149,7 @@
         * @param float $Alt //Site Altitude in km
         * @return array[$Az, $h]
         */
-        function LunarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
+       public static function LunarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
 
             while ($Lon > 180){
                 $Lon = $Lon - 360;
@@ -279,7 +279,7 @@
             //Apply the rotational matrix to the ecliptic rectangular coordinates
             //Also, convert units to km instead of earth equatorial radii   
 
-            $sol=sol_calc($RotM, [$xeclip, $yeclip, $zeclip], $EarthRadEq);
+            $sol=self::sol_calc($RotM, [$xeclip, $yeclip, $zeclip], $EarthRadEq);
 
             //Find the equatorial rectangular coordinates of the location specified
             list($xel, $yel, $zel) = self::sph2cart($Lon * (pi() /180),$Lat * (pi() /180),$Alt+$EarthRadEq);
