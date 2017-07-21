@@ -77,14 +77,20 @@ array (size=2)
   1 => float 47.735928709983
 ```
 
-Input List: 
+Input List:
+ 
 UTC Date and Time - Year, Month, Day, Hour, Minute, Second 
+
 Latitude - Site Latitude in degrees -90:90 -> S(-) N(+)
+
 Longitude - Site Longitude in degrees -180:180 W(-) E(+)
+
 Altitude - Site Altitude in km
 
 Output List: 
+
 Az - Solar Azimuth angle in degrees
+
 El - Solar Elevation/Altitude Angle in degrees
 
 ### Julian date Algorithm (juliandate)

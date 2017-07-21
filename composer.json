@@ -1,7 +1,7 @@
 {
   "name": "loborec/php-astro",
   "description": "Astro is small collection of the astronomical functions written in php.",
-  "keywords": ["php", "astronomy"],
+  "keywords": ["php", "astronomy", "azimuth", "elevation", "solar", "sun", "lunar", "moon"],
   "type": "library",
   "homepage": "https://github.com/loborec/php-astro",
   "license": "",
