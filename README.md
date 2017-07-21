@@ -30,21 +30,33 @@ This algorithm will accept a Latitude, Longitude and Altitude location as well a
 
 Example Function Call: 
 ```php
-$result = LunarAzEl(1991, 05, 19, 13, 0, 0, 50, 10, 0);
+$result = Astro::LunarAzEl(1991, 05, 19, 13, 0, 0, 50, 10, 0);
 var_dump(result);
 ```
 Result:
+```txt
+array (size=2)
+  0 => float 110.63005216655
+  1 => float 35.226177186756
+```
 
 Input List: 
+
 UTC Date and Time - Year, Month, Day, Hour, Minute, Second
+
 Latitude - Site Latitude in degrees -90:90 -> S(-) N(+) 
+
 Longitude - Site Longitude in degrees -180:180 W(-) E(+) 
+
 Altitude - Site Altitude in km
 
 Output List: 
+
 Az - Lunar Azimuth angle in degrees 
+
 El - Lunar Elevation/Altitude Angle in degrees
 
+Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
 
 Copyright (c) 2010, Darin Koblick
 
