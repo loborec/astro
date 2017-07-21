@@ -78,7 +78,13 @@ Example converting date to UTC, and calculate juliandate;
     $mn=gmdate('i', $gmtime);
     $s=gmdate('s', $gmtime);
 
+    echo gmdate('d.m.Y, H:i:s', $gmtime);
     echo juliandate($y, $m, $d, $h, $mn, $s);
+```
+
+```txt
+20.07.2017, 08:20:00
+2457954.8472222
 ```
 
 Input: 
