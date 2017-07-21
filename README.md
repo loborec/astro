@@ -30,14 +30,14 @@ This algorithm will accept a Latitude, Longitude and Altitude location as well a
 
 Example Function Call: 
 ```php
-$result = Astro::LunarAzEl(1991, 05, 19, 13, 0, 0, 50, 10, 0);
+$result = Astro::LunarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
 var_dump(result);
 ```
 Result:
 ```txt
 array (size=2)
-  0 => float 110.63005216655
-  1 => float 35.226177186756
+  0 => float 185.99431193863
+  1 => float 63.191041369392
 ```
 
 Input List: 
@@ -62,19 +62,19 @@ Copyright (c) 2010, Darin Koblick
 
 MATLAB to php translation by Dubravko Loborec
 
-### Solar Azimuth and Elevation Estimation
+### Solar Azimuth and Elevation Estimation (SolarAzEl)
 Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic latitude, longitude and altitude.
 
 Example Function Call: 
 ```php
-$result = Astro::SolarAzEl(1991, 05, 19, 13, 0, 0, 50, 10, 0);
+$result = Astro::SolarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
 var_dump(result);
 ```
 Result:
 ```txt
 array (size=2)
-  0 => float 110.63005216655
-  1 => float 35.226177186756
+  0 => float 109.60060164051
+  1 => float 47.735928709983
 ```
 
 Input List: 
@@ -119,3 +119,9 @@ UTC Date and Time - Year, Month, Day, Hour, Minute, Second
 Output:
 
 Julian date
+
+Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
+
+Copyright (c) 2010, Darin Koblick
+
+MATLAB to php translation by Dubravko Loborec

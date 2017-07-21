@@ -98,7 +98,7 @@
 
             return [$x, $y, $z]; 
         }
-        
+
         /**
         * Calculates juliandate from UTC date
         * php translation by Dubravko Loborec
@@ -149,7 +149,7 @@
         * @param float $Alt //Site Altitude in km
         * @return array[$Az, $h]
         */
-       public static function LunarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
+        public static function LunarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
 
             while ($Lon > 180){
                 $Lon = $Lon - 360;
@@ -357,7 +357,104 @@
             return [$Az, $h];
         }
 
+        /**
+        * Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic latitude, longitude and altitude.
+        * 
+        * php translation and modification by Dubravko Loborec
+        * 
+        * @author Darin Koblick
+        * @copyright  2010, Darin Koblick
+        * @link https://www.mathworks.com/matlabcentral/fileexchange/23051-vectorized-solar-azimuth-and-elevation-estimation
+        * @license https://www.mathworks.com/matlabcentral/fileexchange/23051-vectorized-solar-azimuth-and-elevation-estimation
+        * 
+        * @param integer $y //UTC year
+        * @param integer $m //UTC month
+        * @param integer $d //UTC year
+        * @param integer $h //UTC hour
+        * @param integer $mn //UTC minute
+        * @param integer $s //UTC second
+        * @param float $Lat //Site Latitude in degrees -90:90 -> S(-) N(+) 
+        * @param float $Lon //Site Longitude in degrees -180:180 W(-) E(+) 
+        * @param float $Alt //Site Altitude in km
+        * @return array[$Az, $h]
+        */
+        function SolarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
 
+            $jd=self::juliandate($y, $m, $d, $h, $mn, $s);
+
+            $d = $jd-2451543.5;
+
+            // Keplerian Elements for the Sun (geocentric)
+            $w = 282.9404+4.70935e-5 * $d; //    (longitude of perihelion degrees)
+            //a = 1.000000;//                  (mean distance, a.u.)
+            $e = 0.016709-1.151e-9 * $d;//       (eccentricity)
+            $M = fmod(356.0470+0.9856002585 * $d,360);//   (mean anomaly degrees)
+            $L = $w + $M;                     //(Sun's mean longitude degrees)
+            $oblecl = 23.4393-3.563e-7 * $d;  //(Sun's obliquity of the ecliptic)
+
+            //auxiliary angle
+            $EE = $M+(180/pi() ) * $e * sin($M * (pi() /180)) * (1+$e * cos($M * (pi() /180)));
+
+            //rectangular coordinates in the plane of the ecliptic ($x axis toward
+            //perhilion)
+            $x = cos($EE * (pi() /180))-$e;
+            $y = sin($EE * (pi() /180)) * sqrt(1-pow($e,2));
+
+            //find the distance and true anomaly
+            $r = sqrt(pow($x,2) + pow($y,2));
+            $v = atan2($y,$x) * (180/pi() );
+
+            //find the longitude of the sun
+            $lon = $v + $w;
+
+            //compute the ecliptic rectangular coordinates
+            $xeclip = $r * cos($lon * (pi() /180));
+            $yeclip = $r * sin($lon * (pi() /180));
+            $zeclip = 0.0;
+
+            //rotate these coordinates to equitorial rectangular coordinates
+            $xequat = $xeclip;
+            $yequat = $yeclip * cos($oblecl * (pi() /180))+$zeclip * sin($oblecl * (pi() /180));
+            $zequat = $yeclip * sin(23.4406 * (pi() /180))+$zeclip * cos($oblecl * (pi() /180));
+
+            //convert equatorial rectangular coordinates to $RA and Decl:
+            $r = sqrt(pow($xequat,2) + pow($yequat,2) + pow($zequat,2))-($Alt/149598000); //roll up the altitude correction
+            $RA = atan2($yequat,$xequat) * (180/pi() );
+            $delta = asin($zequat/$r) * (180/pi() );
+
+            //Following the $RA DEC to Az Alt conversion sequence explained here:
+            //http://www.stargazing.net/kepler/altaz.html
+
+            //Find the J2000 value
+            //J2000 = $jd - 2451545.0;
+            //hourvec = datevec(UTC);
+            //UTH = hourvec(:,4) + hourvec(:,5)/60 + hourvec(:,6)/3600;
+            $UTH=$h + $mn/60 + $s/3600;
+
+            //Calculate local siderial time
+            $GMST0=fmod($L+180,360)/15;
+            $SIDTIME = $GMST0 + $UTH + $Lon/15;
+
+            //Replace $RA with hour angle $HA
+            $HA = ($SIDTIME * 15 - $RA);
+
+            //convert to rectangular coordinate system
+            $x = cos($HA * (pi() /180)) * cos($delta * (pi() /180));
+            $y = sin($HA * (pi() /180)) * cos($delta * (pi() /180));
+            $z = sin($delta * (pi() /180));
+
+            //rotate this a$Long an axis going east-west.
+            $xhor = $x * cos((90-$Lat) * (pi() /180))-$z * sin((90-$Lat) * (pi() /180));
+            $yhor = $y;
+            $zhor = $x * sin((90-$Lat) * (pi() /180))+$z * cos((90-$Lat) * (pi() /180));
+
+            //Find the h and AZ 
+            $Az = atan2($yhor,$xhor) * (180/pi() ) + 180;
+            $El = asin($zhor) * (180/pi() );
+
+            return [$Az, $El];
+
+        }
 
     }
 
