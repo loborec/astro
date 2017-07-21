@@ -1,7 +1,7 @@
 php-astro
 ===========
 
-Class Astro is small collection of the astronomical functions written in php. 
+Astro is small collection of the astronomical functions written in php. 
 
 This class is based on the works:
 
