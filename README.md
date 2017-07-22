@@ -1,7 +1,7 @@
-php-astro
+php-azel
 ===========
 
-Astronomical Objects Azimuth and Elevation Estimation 
+Solar and Lunar Azimuth and Elevation Estimation 
 
 This class is based on the works:
 
@@ -17,57 +17,17 @@ You can use [Composer](http://getcomposer.org/) to add the [package](https://pac
 ```json
 {
   "require": {
-    "loborec/astro": "dev-master"
+    "loborec/php-azel": "dev-master"
   }
 }
 ```
 
-## Functions
-### Lunar Azimuth and Altitude Estimation (LunarAzEl)
-Predict the Lunar Azimuth and Altitude within +/- .2 deg of any lat and lon for a given UTC
-
-This algorithm will accept a Latitude, Longitude and Altitude location as well as a specific universal coordinated time. It will use this information and calculate the position of the moon in a local coordinate frame (az and alt aka az and el).
-
-Example Function Call: 
-```php
-$result = Astro::LunarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
-var_dump($result);
-```
-Result:
-```txt
-array (size=2)
-  0 => float 185.99431193863
-  1 => float 63.191041369392
-```
-
-Input List: 
-
-UTC Date and Time - Year, Month, Day, Hour, Minute, Second
-
-Latitude - Site Latitude in degrees -90:90 -> S(-) N(+) 
-
-Longitude - Site Longitude in degrees -180:180 W(-) E(+) 
-
-Altitude - Site Altitude in km
-
-Output List: 
-
-Az - Lunar Azimuth angle in degrees 
-
-El - Lunar Elevation/Altitude Angle in degrees
-
-Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
-
-Copyright (c) 2010, Darin Koblick
-
-MATLAB to php translation by Dubravko Loborec
-
-### Solar Azimuth and Elevation Estimation (SolarAzEl)
+### Solar Azimuth and Elevation Estimation
 Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic latitude, longitude and altitude.
 
 Example Function Call: 
 ```php
-$result = Astro::SolarAzEl(2017, 07, 20, 8, 20, 0, 44, 14, 0);
+$result = AzEl::Solar(2017, 07, 20, 8, 20, 0, 44, 14, 0);
 var_dump($result);
 ```
 Result:
@@ -92,6 +52,46 @@ Output List:
 Az - Solar Azimuth angle in degrees
 
 El - Solar Elevation/Altitude Angle in degrees
+
+Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
+
+Copyright (c) 2010, Darin Koblick
+
+MATLAB to php translation by Dubravko Loborec
+
+## Functions
+### Lunar Azimuth and Altitude Estimation
+Predict the Lunar Azimuth and Altitude within +/- .2 deg of any lat and lon for a given UTC
+
+This algorithm will accept a Latitude, Longitude and Altitude location as well as a specific universal coordinated time. It will use this information and calculate the position of the moon in a local coordinate frame (az and alt aka az and el).
+
+Example Function Call: 
+```php
+$result = AzEl::Lunar(2017, 07, 20, 8, 20, 0, 44, 14, 0);
+var_dump($result);
+```
+Result:
+```txt
+array (size=2)
+  0 => float 185.99431193863
+  1 => float 63.191041369392
+```
+
+Input List: 
+
+UTC Date and Time - Year, Month, Day, Hour, Minute, Second
+
+Latitude - Site Latitude in degrees -90:90 -> S(-) N(+) 
+
+Longitude - Site Longitude in degrees -180:180 W(-) E(+) 
+
+Altitude - Site Altitude in km
+
+Output List: 
+
+Az - Lunar Azimuth angle in degrees 
+
+El - Lunar Elevation/Altitude Angle in degrees
 
 Verified output by comparison with the following source data: http://aa.usno.navy.mil/data/docs/AltAz.php
 
