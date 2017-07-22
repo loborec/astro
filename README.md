@@ -27,7 +27,7 @@ Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic
 
 Example Function Call: 
 ```php
-$result = AzEl::Solar(2017, 07, 20, 8, 20, 0, 44, 14, 0);
+$result = AzEl::Solar(2017, 7, 20, 8, 20, 0, 44, 14, 0);
 var_dump($result);
 ```
 Result:
@@ -67,7 +67,7 @@ This algorithm will accept a Latitude, Longitude and Altitude location as well a
 
 Example Function Call: 
 ```php
-$result = AzEl::Lunar(2017, 07, 20, 8, 20, 0, 44, 14, 0);
+$result = AzEl::Lunar(2017, 7, 20, 8, 20, 0, 44, 14, 0);
 var_dump($result);
 ```
 Result:
