@@ -1,9 +1,9 @@
 {
-  "name": "loborec/php-astro",
-  "description": "Astro is small collection of the astronomical functions written in php.",
+  "name": "loborec/php-azel",
+  "description": "Solar and Lunar Azimuth and Elevation Estimation",
   "keywords": ["php", "astronomy", "azimuth", "elevation", "solar", "sun", "lunar", "moon"],
   "type": "library",
-  "homepage": "https://github.com/loborec/php-astro",
+  "homepage": "https://github.com/loborec/php-azel",
   "license": "",
   "authors": [
     {
