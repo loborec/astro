@@ -1,7 +1,7 @@
 php-azel
 ===========
 
-Solar and Lunar Azimuth and Elevation Estimation 
+Solar and Lunar Azimuth and Elevation Estimation. 
 
 This class is based on the works:
 
@@ -21,6 +21,8 @@ You can use [Composer](http://getcomposer.org/) to add the [package](https://pac
   }
 }
 ```
+
+## Functions
 
 ### Solar Azimuth and Elevation Estimation
 Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic latitude, longitude and altitude.
@@ -59,9 +61,8 @@ Copyright (c) 2010, Darin Koblick
 
 MATLAB to php translation by Dubravko Loborec
 
-## Functions
 ### Lunar Azimuth and Altitude Estimation
-Predict the Lunar Azimuth and Altitude within +/- .2 deg of any lat and lon for a given UTC
+Predict the Lunar Azimuth and Altitude within +/- .2 deg of any lat and lon for a given UTC.
 
 This algorithm will accept a Latitude, Longitude and Altitude location as well as a specific universal coordinated time. It will use this information and calculate the position of the moon in a local coordinate frame (az and alt aka az and el).
 
