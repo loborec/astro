@@ -1,9 +1,9 @@
 {
-  "name": "loborec/php-azel",
+  "name": "loborec/php-astro",
   "description": "Solar and Lunar Azimuth and Elevation Estimation",
   "keywords": ["php", "astronomy", "azimuth", "elevation", "solar", "sun", "lunar", "moon"],
   "type": "library",
-  "homepage": "https://github.com/loborec/php-azel",
+  "homepage": "https://github.com/loborec/php-astro",
   "license": "",
   "authors": [
     {

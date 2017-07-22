@@ -1,6 +1,6 @@
 <?php
 
-    class AzEl{
+    class Astro{
 
         /**
         * php translation of a cart2sph MATLAB function
@@ -148,7 +148,7 @@
         * @param float $Alt //Site Altitude in km
         * @return array[$Az, $h]
         */
-        function Solar($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
+        function SolarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
 
             $jd=self::juliandate($y, $m, $d, $h, $mn, $s);
 
@@ -248,7 +248,7 @@
         * @param float $Alt //Site Altitude in km
         * @return array[$Az, $h]
         */
-        public static function Lunar($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
+        public static function LunarAzEl($y, $m, $d, $h=0, $mn=0, $s=0, $Lat, $Lon, $Alt){
 
             while ($Lon > 180){
                 $Lon = $Lon - 360;

@@ -1,4 +1,4 @@
-php-azel
+php-astro
 ===========
 
 Solar and Lunar Azimuth and Elevation Estimation. 
@@ -17,7 +17,7 @@ You can use [Composer](http://getcomposer.org/) to add the [package](https://pac
 ```json
 {
   "require": {
-    "loborec/php-azel": "dev-master"
+    "loborec/php-astro": "dev-master"
   }
 }
 ```
@@ -29,7 +29,7 @@ Predict the azimuth and elevation of the Sun within +/- 1 degree at any geodetic
 
 Example Function Call: 
 ```php
-$result = AzEl::Solar(2017, 7, 20, 8, 20, 0, 44, 14, 0);
+$result = Astro::SolarAzEl(2017, 7, 20, 8, 20, 0, 44, 14, 0);
 var_dump($result);
 ```
 Result:
@@ -68,7 +68,7 @@ This algorithm will accept a Latitude, Longitude and Altitude location as well a
 
 Example Function Call: 
 ```php
-$result = AzEl::Lunar(2017, 7, 20, 8, 20, 0, 44, 14, 0);
+$result = Astro::LunarAzEl(2017, 7, 20, 8, 20, 0, 44, 14, 0);
 var_dump($result);
 ```
 Result:
